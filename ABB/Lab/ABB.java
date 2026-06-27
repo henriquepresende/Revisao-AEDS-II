@@ -262,6 +262,22 @@ private void caminhamentoPreOrdem(No<E> raizArvore) {
     }
 }
 
+public void caminhamentoPosOrdem() {
+    if (vazia()) {
+        throw new IllegalStateException("A árvore está vazia");
+    }
+    caminhamentoPosOrdem(this.raiz);
+}
+
+private void caminhamentoPosOrdem(No<E> raizArvore) {
+    if (raizArvore != null) {
+        caminhamentoPosOrdem(raizArvore.getEsquerda());
+        caminhamentoPorOrdem(raizArvore.getDireita());
+
+        System.out.println(raizArvore.getItem());
+    }
+}
+
 @Override
 public int tamanho() {
     return tamanho;
