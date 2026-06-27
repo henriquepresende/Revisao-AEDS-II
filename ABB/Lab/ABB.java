@@ -278,6 +278,21 @@ private void caminhamentoPosOrdem(No<E> raizArvore) {
     }
 }
 
+public void caminhamentoDecrescente() {
+    if (vazia()) {
+        throw new IllegalStateException("A árvore está vazia");
+    }
+    caminhamentoDecrescente(this.raiz);
+}
+
+private void caminhamentoDecrescente(No<E> raizArvore) {
+    if (raizArvore != null) {
+        caminhamentoDecrescente(raizArvore.getDireita());
+        System.out.println(raizArvore.getItem());
+        caminhamentoDecrescente(raizArvore.getEsquerda());
+    }
+}
+
 @Override
 public int tamanho() {
     return tamanho;
