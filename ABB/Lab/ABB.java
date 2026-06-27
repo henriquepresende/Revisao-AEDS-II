@@ -293,8 +293,22 @@ private void caminhamentoDecrescente(No<E> raizArvore) {
     }
 }
 
+public E obterMenor() {
+    if (vazia()) {
+        throw new IllegalStateExceptin("A árvore está vazia!");
+    }
+    return obterMenor(this.raiz);
+}
+
+private E obterMenor(No<E> raizArvore){
+    if(raizArvore.getEsquerda() == null){
+        return raizArvore.getItem();
+    }
+
+    return obterMenor(raizArvore.getEsquerda());
+}
+
 @Override
 public int tamanho() {
     return tamanho;
-}
 }
