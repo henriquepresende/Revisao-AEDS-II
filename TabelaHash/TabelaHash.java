@@ -104,4 +104,14 @@ public class TabelaHash<K, V> {
             }
         }
     }
+
+    public boolean vazia(){
+    for (int i = 0; i < this.tabela.length;i++){
+        if (this.tabela[i] != null && !this.tabela[i].vazia()){
+            return false;
+        }
+    }
+
+    return true;
+    }
 }
