@@ -308,6 +308,18 @@ private E obterMenor(No<E> raizArvore){
     return obterMenor(raizArvore.getEsquerda());
 }
 
+public ABB<E> clone(){
+
+    ABB<E> arvoreClonada = new ABB<>();
+
+    if (!this.vazia()){
+        arvoreClonada.raiz = this.raiz.clone();
+
+        arvoreClonada.tamanho = this.tamanho;
+    }
+
+    return arvoreClonada;
+}
 @Override
 public int tamanho() {
     return tamanho;

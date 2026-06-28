@@ -77,4 +77,18 @@ public class No<K, V> {
 
          return (alturaEsquerda - alturaDireita);
     }
+
+    public No<T> clone(){
+        No<T> novoNo = new No<> (this.chave, this.item);
+
+        if (this.esquerda != null){
+            novoNo.setEsquerda(this.esquerda.clone());
+        }
+
+        if (this.direita != null){
+            novoNo.setDireita(this.direita.clone());
+        }
+
+        return novoNo;
+    }
 }
