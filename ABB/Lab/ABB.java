@@ -320,6 +320,31 @@ public ABB<E> clone(){
 
     return arvoreClonada;
 }
+
+public ABB<E> obterSubconjuntoMaiores(E item){
+    this.pesquisar(item);
+    ABB<E> subconjunto = this.clone();
+    subconjunto.raiz = podarMenores(subconjunto.raiz, item);
+
+    return subconjunto;
+}
+
+private No<E> podarMenores(No<E> raizArvore, E itemProcurado){
+    if (raizArvore == null){
+        return null;
+    }
+    int comparacao = raizArvore.getItem().compareTo(itemProcurado);
+
+    if (comparacao < 0){
+        return podarMenores(raizArvore.getDireita(), itemProcurado);
+    }
+    else{
+        raizArvore.setEsquerda(podarMenores(raizArvore.getEsquerda(), itemProcurado));
+        return raizArvore;
+    }
+
+
+}
 @Override
 public int tamanho() {
     return tamanho;
