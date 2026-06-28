@@ -342,8 +342,13 @@ private No<E> podarMenores(No<E> raizArvore, E itemProcurado){
         raizArvore.setEsquerda(podarMenores(raizArvore.getEsquerda(), itemProcurado));
         return raizArvore;
     }
+}
 
-
+public boolean ehRaiz(E item){
+    if (this.vazia()){
+        throw new IllegalStateException("A árvore está vazia!");
+    }
+    return this.raiz.getItem().equals(item);
 }
 @Override
 public int tamanho() {
