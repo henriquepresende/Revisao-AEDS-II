@@ -350,6 +350,48 @@ public boolean ehRaiz(E item){
     }
     return this.raiz.getItem().equals(item);
 }
+
+public E obterAntecessor(E item){
+    if (this.vazia()){
+        throw new IllegalStateException("A árvore está vazia!");
+    }
+    No<E> atual = this.raiz;
+    No<E> antecessor = null;
+    boolean encontrado = false;
+
+    while(atual != null){
+        int comparacao = item.compareTo(item.getItem());
+
+        if (comparacao == 0){
+            encontrado = true;
+
+            if (atual.getEsquerda != null) {
+                No<E> aux = atual.getEsquerda();
+                while (aux.getDireita()!= 0){
+                    aux = aux.getDireita();
+                }
+                antecessor = aux;
+            }
+            break;
+        } else if (comparacao < 0) {
+            atual = atual.getEsquerda();
+        }
+        else{
+            antecessor = atual;
+            atual = atual.getDireita();
+        }
+    }
+
+    if(!encontrou) {
+        throw new NoSuchELementException("O item informado não foi encontrado na árvore");
+    }
+
+    if(antecessor == null){
+        throw new NoSuchElementException("O item informado não possui antecessor!");
+    }
+
+    return antecessor.getItem();
+}
 @Override
 public int tamanho() {
     return tamanho;
